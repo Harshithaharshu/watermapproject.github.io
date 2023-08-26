@@ -1,0 +1,106 @@
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+  />
+  <span>Welcome To website</span>
+    <div class="spacer"></div>
+    <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
+      <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+        <rect width="400" height="400" fill="none"/>
+        <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#fff"/>
+      </svg>
+    </a>
+</div>
+
+<div class="content" role="main">
+
+<app-chart></app-chart>
+<div class="form-group">
+	<div class="col-md-6">
+		<input type="text" [(ngModel)]="searchText" 
+           class="form-control" placeholder="Search By Name" />
+  </div>
+</div>
+<div class="col-md-12">
+  <br/>
+  <table id="customers" style="width:100%;" *ngIf="records.length > 0; else no_data">
+    <tr>
+      <th class="pointer" (click)="sort('Name')">Name</th>
+      <td *ngFor="let item of records | category : searchText">{{item.Name}}</td>
+    </tr>
+    <tr>
+      <th class="pointer" (click)="sort('Latitude')">Latitude</th>
+      <td *ngFor="let item of records | category : searchText">{{item.Latitude}}</td>
+    </tr>
+    <tr>
+      <th class="pointer" (click)="sort('Longitude')">Longitude</th>
+      <td *ngFor="let item of records | category : searchText">{{item.Longitude}}</td>
+    </tr>
+    <tr>
+      <th class="pointer" (click)="sort('Longitude')">Elevation</th>
+      <td *ngFor="let item of records | category : searchText">{{item.Longitude}}</td>
+    </tr>
+    <tr>
+      <th class="pointer" (click)="sort('City')">City</th>
+      <td *ngFor="let item of records | category : searchText">{{item.City}}</td>
+      <tr>
+        <th class="pointer" (click)="sort('State')">State</th>
+        <td *ngFor="let item of records | category : searchText">{{item.State}}</td>
+      </tr>
+      <tr>
+        <th class="pointer" (click)="sort('SystemCapacity')">System Capacity</th>
+        <td *ngFor="let item of records | category : searchText">{{item.SystemCapacity}}</td>
+      </tr>
+      <tr>
+        <th class="pointer" (click)="sort('Timeoffset')">Time Offset(GMT)</th>
+        <td *ngFor="let item of records | category : searchText">{{item.Timeoffset}}</td>
+      </tr>
+  </table>
+  <ng-template #no_data>
+    No data found!!!
+   </ng-template >
+</div>
+<div class="col-md-12"style="padding:14px">
+  <table id="customers"> 
+    <tr> <th colspan="3" (onClick)="sortNumberColumn('SiteA')">SiteA</th> 
+    </tr> 
+      <tr> 
+        <th>TimeStamps</th> 
+        <th>Temparature</th>
+        <th>Battery</th>
+        </tr> 
+        <tr *ngFor="let item of tab1"> 
+          <td>{{item.TimeStamps}}</td> 
+          <td>{{item.Temparature}}</td> 
+          <td>{{item.Battery}}</td> 
+        </tr> 
+      </table>
+  </div>
+  <br/><br/>
+  <br/><br/>
+  <div></div>
+  <div class="col-md-12" style="padding: 14px;">
+    <table id="customers"> 
+      <tr> <th colspan="4">SiteB</th> 
+      </tr> 
+        <tr> 
+          <th>TimeStamps</th> 
+          <th>Temparature</th>
+          <th>Battery</th>
+          <th>Turbidity</th>
+          </tr> 
+          <tr *ngFor="let item of tab1"> 
+            <td>{{item.TimeStamps}}</td> 
+            <td>{{item.Temparature}}</td> 
+            <td>{{item.Battery}}</td> 
+            <td>{{item.Turbidity}}</td> 
+          </tr> 
+        </table>
+    </div>
+<div id="chartDiv" style="width: 100%; height: 500px"></div>
+</div>
+<router-outlet></router-outlet>
